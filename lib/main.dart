@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'home_page.dart';
+import 'package:flutter_note_app/ui/note_detail.dart';
+import 'ui/note_home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,12 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(),
+      initialRoute: '/home',
+      routes: {
+        NoteHomePage.routeName: (context) => NoteHomePage(),
+        NoteDetail.routeName:   (context) => NoteDetail()
+        //'/home': (context) => NoteHomePage(),
+        //'/note-detail': (context) => NoteDetail(),
+      },
+
     );
   }
 }
+
