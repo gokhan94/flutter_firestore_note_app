@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_note_app/api/data.dart';
 import 'package:flutter_note_app/model/category.dart';
+import 'package:flutter_note_app/screens/note_add.dart';
 import 'package:flutter_note_app/ui/category_add.dart';
 import 'note_detail.dart';
 import 'package:flutter_note_app/model/note.dart';
@@ -55,10 +56,16 @@ class _NoteHomePageState extends State<NoteHomePage> {
             textColor: Colors.black87,
             onPressed: () {
               Navigator.pushNamed(context, NoteDetail.routeName,
-                  arguments: Note(1, "note 1", "note description", 2));
+                  arguments: Note(1, "note 1", "1", "note description", "PC"));
             },
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pushNamed(context, NoteAdd.routeName);
+        },
+        child: Icon(Icons.add_to_photos),
       ),
     );
   }

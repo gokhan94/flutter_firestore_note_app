@@ -2,19 +2,23 @@ class Note {
   int noteId;
   String name;
   String description;
-  int categoryDocId;
+  String categoryId;
+  String categoryName;
 
-  Note(this.noteId, this.name, this.description, this.categoryDocId);
+  Note(this.noteId, this.name, this.description, this.categoryId, this.categoryName);
+
+  Note.withInfo({this.noteId, this.name, this.description, this.categoryId, this.categoryName});
 
   Note.fromJson(Map<String, dynamic> note) {
     noteId = note["noteId"];
     name = note["name"];
     description = note["description"];
-    categoryDocId = note["categoryId"];
+    categoryId = note["categoryId"];
+    categoryName = note["categoryName"];
   }
 
-  Map NotetoJson() {
-    return {"noteId": noteId, "name": name, "description": description, categoryDocId: "categoryId"};
+  Map<String, dynamic> NotetoJson() {
+    return {"noteId": noteId, "name": name, "description": description, "categoryId": categoryId, "categoryName": categoryName};
   }
 
 

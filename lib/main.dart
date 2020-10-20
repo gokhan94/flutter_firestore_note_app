@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_note_app/screens/category_note_detail.dart';
+import 'package:flutter_note_app/screens/note_add.dart';
 import 'package:flutter_note_app/ui/category_add.dart';
 import 'package:flutter_note_app/ui/note_detail.dart';
 import 'ui/note_home.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         NoteHomePage.routeName: (context) => NoteHomePage(),
         NoteDetail.routeName:   (context) => NoteDetail(),
+        NoteAdd.routeName: (context) => NoteAdd(),
         CategoryAdd.routeName:   (context) => CategoryAdd(),
         CategoryNoteDetail.routeName:   (context) => CategoryNoteDetail(),
         //'/home': (context) => NoteHomePage(),
