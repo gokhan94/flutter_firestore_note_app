@@ -21,8 +21,10 @@ class _CategoryAddState extends State<CategoryAdd> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         title: Text("Category Add"),
+        backgroundColor: Colors.blueGrey,
       ),
       body: Column(
         children: [
@@ -31,17 +33,34 @@ class _CategoryAddState extends State<CategoryAdd> {
               child: Form(
                 key: _formKey,
                 child: TextFormField(
-                  maxLength: 20,
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                  maxLength: 10,
                   decoration: InputDecoration(
+                    labelStyle: TextStyle(color: Colors.white70, fontSize: 20.0),
+                    fillColor: Colors.grey.shade500,
+                    filled: true,
                     labelText: 'Category Add',
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color:  Colors.white70
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                      borderSide: BorderSide(
+                        color: Colors.white70,
+                        width: 1.0,
+                      )),
                     suffixIcon: Icon(
-                      Icons.check_circle,
+                      Icons.category,
+                      color: Colors.white70,
                     ),
                   ),
                   validator: (value) {
                     if (value.isEmpty) {
                       return 'Please enter a name';
                     }
+                    return null;
                   },
                   onSaved: (value){
                     setState(() {
@@ -53,7 +72,7 @@ class _CategoryAddState extends State<CategoryAdd> {
 
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: RaisedButton(
               onPressed: () async {
                 if (_formKey.currentState.validate()) {
@@ -64,13 +83,19 @@ class _CategoryAddState extends State<CategoryAdd> {
                   category.categoryName = _categoryName;
 
                  await collectionCatergory.addCategory(category).then((value){
-                   // DocumentReference(categories/DVVGnMtE3DP6awNKvFN6)
+                   Navigator.pop(context);
                  });
                 } else {
                   print('Error');
                 }
               },
-              child: Text('Create'),
+              color: Colors.blueGrey.shade600,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0),
+                  side: BorderSide(color: Colors.blueGrey.shade600)
+              ),
+              child: Text('Create Category', style: TextStyle(fontSize: 18, color: Colors.white),),
+
             ),
           )
         ],
